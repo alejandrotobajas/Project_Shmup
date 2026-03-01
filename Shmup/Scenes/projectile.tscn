@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dousa0ahtigtv"]
+
+[ext_resource type="Script" uid="uid://karfrrpy3tfa" path="res://Scenes/Scripts/projectile.gd" id="1_yr2qt"]
+[ext_resource type="Texture2D" uid="uid://bitc408pcvb4k" path="res://Assets/kenney_space-shooter-extension/PNG/Sprites/Missiles/spaceMissiles_001.png" id="2_tl4hk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxf0c"]
+height = 46.0
+
+[node name="Projectile" type="Area2D" unique_id=1794833345 groups=["PlayerProjectile"]]
+collision_mask = 8
+script = ExtResource("1_yr2qt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1892991474]
+texture = ExtResource("2_tl4hk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1853699701]
+shape = SubResource("CapsuleShape2D_qxf0c")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=222064318]
+rect = Rect2(-10, -25, 20, 49)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

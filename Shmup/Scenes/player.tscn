@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dofqynnkity8g"]
+
+[ext_resource type="Script" uid="uid://dmsr1dx2jagqj" path="res://Scenes/Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://cqs87vnbvg0v7" path="res://Assets/kenney_space-shooter-extension/PNG/Sprites/Ships/spaceShips_001.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://dovxvitpsv661" path="res://Assets/Captura de pantalla 2026-02-24 195419.png" id="3_6t5aa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(110, 84)
+
+[sub_resource type="Theme" id="Theme_6t5aa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t5aa"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.9999998, 0.012956028, 0.19125414, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgqql"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(4.1392445e-06, 0.85250545, 0.26771924, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
+radius = 33.0
+
+[node name="Player" type="CharacterBody2D" unique_id=2113774239]
+collision_mask = 8
+script = ExtResource("1_cvnsp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1447917808]
+texture = ExtResource("2_6t5aa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1171070708]
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2095696792]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=2125514062]
+position = Vector2(170.71205, 571.1395)
+scale = Vector2(0.5379377, 0.22093023)
+texture = ExtResource("3_6t5aa")
+region_enabled = true
+region_rect = Rect2(0.333313, 0, 512, 128.16669)
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1319947507]
+offset_left = 43.71205
+offset_top = 563.1395
+offset_right = 294.71204
+offset_bottom = 580.1395
+theme = SubResource("Theme_6t5aa")
+theme_override_colors/font_color = Color(1, 0.9490196, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_6t5aa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vgqql")
+show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1866419075 groups=["Player"]]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=169508339]
+shape = SubResource("CircleShape2D_cvnsp")
+debug_color = Color(0.86456794, 0.19379863, 0.6123707, 0.41960785)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

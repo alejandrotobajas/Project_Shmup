@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dn8iumf28uc82"]
+
+[ext_resource type="Script" uid="uid://cldonpg4tehmm" path="res://Scenes/Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://bdqbsji6u6v5g" path="res://Assets/kenney_space-shooter-extension/PNG/Sprites/Ships/spaceShips_006.png" id="2_afpow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(65, 65)
+
+[node name="Enemy" type="Area2D" unique_id=1565785668 groups=["Enemy"]]
+collision_layer = 8
+script = ExtResource("1_1f0kj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=118772977]
+position = Vector2(1.9073486e-06, 0)
+rotation = 3.1422029
+scale = Vector2(0.43018207, 0.40027636)
+texture = ExtResource("2_afpow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=413213041]
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1379215800]
+rect = Rect2(-35, -34, 70, 68)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
