@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://qm0tqjg25vfk"]
 
 [ext_resource type="Texture2D" uid="uid://d7iyny0ld38d" path="res://Assets/Explosion_Sheet.png" id="1_mbc3v"]
+[ext_resource type="Script" uid="uid://be8ew6dno77qs" path="res://Scenes/Scripts/explosion.gd" id="2_ix64a"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l0h7m"]
 particles_animation = true
@@ -34,5 +35,7 @@ emitting = false
 amount = 10
 texture = ExtResource("1_mbc3v")
 lifetime = 0.5
+one_shot = true
 explosiveness = 0.51
 process_material = SubResource("ParticleProcessMaterial_lwj13")
+script = ExtResource("2_ix64a")
