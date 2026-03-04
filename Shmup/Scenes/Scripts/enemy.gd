@@ -44,6 +44,9 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerProjectile"):
 		explode()
 		
+	if area.is_in_group("Player"):
+		explode()
+
 
 func explode():
 		var explosion = ExplosionScene.instantiate()
